@@ -1,6 +1,6 @@
 # 10 Languages Crash Course
 
-### Same concept. 10 languages. Side by side.
+### Same concept. Side by side. Not every topic in every language.
 
 ```text
 Python          →  print("hello")
@@ -15,38 +15,34 @@ PHP             →  echo "hello"
 C#              →  Console.WriteLine("hello")
 ```
 
-**Learn by comparing.**
+**Core (01–10) aims for all 10 languages.**  
+**Intermediate / advanced topics exist where they make sense** (mainly Python, JS, Go, Rust).
 
 [![CI](https://github.com/just-ulas/10-languages-crash-course/actions/workflows/ci.yml/badge.svg)](https://github.com/just-ulas/10-languages-crash-course/actions)
 
 ---
 
-## Topics & Coverage
+## Coverage matrix (honest)
 
-| #  | Topic            | Languages / mechanism                          | Challenge |
-|----|------------------|------------------------------------------------|-----------|
-| 01 | Hello World      | ✅ All 10                                      | ✅        |
-| 02 | Variables        | ✅ All 10                                      | ✅        |
-| 03 | If / Else        | ✅ All 10                                      | ✅        |
-| 04 | Loops            | ✅ All 10                                      | ✅        |
-| 05 | Functions        | ✅ All 10                                      | ✅        |
-| 06 | Arrays / Lists   | ✅ All 10                                      | ✅        |
-| 07 | Maps / Dicts     | ✅ All 10                                      | ✅        |
-| 08 | Classes/Structs  | ✅ All 10                                      | ✅        |
-| 09 | Strings          | ✅ All 10                                      | ✅        |
-| 10 | User Input       | Most                                           | ✅        |
-| 11 | Error Handling   | try/catch · err!=nil · Result                  | ✅        |
-| 12 | File I/O         | Py, JS, Go, Rust                               | ✅        |
-| 13 | Modules          | Py, JS, Go, Rust                               | ✅        |
-| 14 | JSON             | Py, JS, Go, Rust                               | ✅        |
-| 15 | Enums            | Py, JS, Go, Rust, TS, Java, C#                 | ✅        |
-| 16 | Async            | Py `asyncio` · JS `Promise` · Go `goroutine`   | ✅        |
-| 17 | HTTP / API       | Py `requests` · JS `fetch` · Go `net/http`     | ✅        |
-| 18 | Testing          | Py, JS, Go, Rust self-checks                   | ✅        |
-| 19 | Packages         | pip · npm · go mod · cargo                     | ✅        |
-| 20 | Concurrency      | Py `threading` · Go `goroutine+WaitGroup`      | ✅        |
+|    | Py | JS | Go | Rs | Jv | TS | Rb | PHP | C++ | C# |
+|----|----|----|----|----|----|----|----|-----|-----|----|
+| 01–08 Core | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| 09 Strings | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| 10 Input | ✓ | ✓ | ✓ | ✓ | ~ | ~ | ✓ | ✓ | ~ | ✓ |
+| 11 Errors | ✓ | ✓ | ✓ | ✓ | ~ | ~ | ~ | ~ | ~ | ~ |
+| 12 File I/O | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |
+| 13 Modules | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |
+| 14 JSON | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |
+| 15 Enums | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ |
+| 16 Async | ✓ asyncio | ✓ Promise | ✓ goroutine | note |  |  |  |  |  |  |
+| 17 HTTP | ✓ | ✓ | ✓ |  |  |  |  |  |  |  |
+| 18 Testing | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |
+| 19 Packages | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |
+| 20 Concurrency | ✓ thread |  | ✓ WaitGroup |  |  |  |  |  |  |  |
 
-> Advanced topics are not forced into every language on purpose.
+`~` = partial / may exist under a nearby name. Empty = not present yet.
+
+This is intentional: forcing async or ownership-heavy topics into every language produces fake comparisons.
 
 ---
 
@@ -54,30 +50,38 @@ C#              →  Console.WriteLine("hello")
 
 ```bash
 chmod +x run.sh
-./run.sh python 09
-./run.sh all 01
-./run.sh csharp 01
+./run.sh python 9
+./run.sh java 1      # resolves public class name correctly
+./run.sh all 1
 ```
+
+Interactive lessons (`*input*`) are skipped in CI; run those locally.
 
 ---
 
 ## Mini Projects
 
-| Project            | Status |
-|--------------------|--------|
-| **Calculator**     | **10/10** |
-| **Number Guessing**| **10/10** |
-| **Password Generator** | **10/10** |
-| Todo CLI           | 5 — Py, JS, Go, Rust, PHP |
+| Project | Status | Note |
+|---------|--------|------|
+| Calculator | 10/10 | beginner |
+| Number Guessing | 10/10 | beginner |
+| Password Generator | 10/10 | use CSPRNG (`secrets` / `crypto`) |
+| Todo CLI | 5 langs | no persistence yet |
 
 ---
 
-## Extra
+## Challenges
 
-- `COMPARISON.md`
-- `challenges/` — **all 20 topics**
-- `explanations/tr` + `en`
-- MIT + CONTRIBUTING + issue/PR templates
-- CI on push
+`challenges/` has a prompt for topics 01–20.  
+They are exercise prompts (task + example), not full graded test harnesses yet.
+
+---
+
+## Docs
+
+- `COMPARISON.md` — high-level language differences
+- `explanations/en` + `tr` — growing; other langs partial
+- `CONTRIBUTING.md` — current priorities
+- MIT license, issue + PR templates
 
 **https://github.com/just-ulas/10-languages-crash-course**
