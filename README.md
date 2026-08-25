@@ -20,6 +20,8 @@ That’s the whole point of this repo.
 
 **Learn by comparing.**
 
+[![CI](https://github.com/just-ulas/10-languages-crash-course/actions/workflows/ci.yml/badge.svg)](https://github.com/just-ulas/10-languages-crash-course/actions)
+
 ---
 
 ## Why this exists
@@ -34,32 +36,22 @@ Perfect if you:
 
 ---
 
-## Table of Contents
-
-- [Progress](#progress)
-- [Structure](#structure)
-- [Topics covered](#topics-covered)
-- [Quick examples](#quick-examples)
-- [How to run](#how-to-run-the-examples)
-- [Explanations (22 languages)](#explanations-in-other-languages)
-- [Contributing](#contributing)
-
----
-
 ## Progress
 
-| Language       | Status          | Progress      |
-|----------------|-----------------|---------------|
-| Python         | Complete        | ██████████ 100% |
-| JavaScript     | Complete        | ██████████ 100% |
-| Go             | Complete        | ██████████ 100% |
-| Rust           | Partial         | ██████░░░░ 60%  |
-| Java           | Started         | ██░░░░░░░░ 20%  |
-| TypeScript     | Started         | ██░░░░░░░░ 20%  |
-| Ruby           | Started         | ██░░░░░░░░ 20%  |
-| C++            | Not started     | ░░░░░░░░░░ 0%   |
-| PHP            | Not started     | ░░░░░░░░░░ 0%   |
-| C#             | Not started     | ░░░░░░░░░░ 0%   |
+| Language       | Status     | Progress        |
+|----------------|------------|-----------------|
+| Python         | Complete   | ██████████ 100% |
+| JavaScript     | Complete   | ██████████ 100% |
+| Go             | Complete   | ██████████ 100% |
+| Rust           | Complete   | ██████████ 100% |
+| Java           | Complete   | ██████████ 100% |
+| TypeScript     | Complete   | ██████████ 100% |
+| Ruby           | Complete   | ██████████ 100% |
+| C++            | Complete   | ██████████ 100% |
+| PHP            | Complete   | ██████████ 100% |
+| C#             | Complete   | ██████████ 100% |
+
+All 10 languages now have the same 8 core lessons.
 
 ---
 
@@ -67,7 +59,7 @@ Perfect if you:
 
 ```text
 ├── python/          01_hello → 08_classes
-├── javascript/      same lessons
+├── javascript/
 ├── go/
 ├── rust/
 ├── java/
@@ -76,15 +68,17 @@ Perfect if you:
 ├── cpp/
 ├── php/
 ├── csharp/
-└── explanations/    Turkish, English + 20 more languages
+├── explanations/    Turkish + English (full) + 20 more
+├── run.sh           One command runner
+└── .github/workflows/ci.yml
 ```
 
 Every folder uses the **exact same lesson numbers**.  
-Open `03_if` in Python and `03_if` in Go → instant comparison.
+Open `03_if` in any language → instant comparison.
 
 ---
 
-## Topics covered
+## Topics covered (core 8)
 
 | #  | Topic             | What you learn                     |
 |----|-------------------|------------------------------------|
@@ -99,41 +93,35 @@ Open `03_if` in Python and `03_if` in Go → instant comparison.
 
 ---
 
-## Quick examples
+## Side-by-side example (Variables)
 
-**Python**
-```python
-print("hello from python")
-name = "ulas"
-print(f"hi {name}")
-```
-
-**JavaScript**
-```js
-console.log("hello from javascript");
-const name = "ulas";
-console.log(`hi ${name}`);
-```
-
-**Go**
-```go
-fmt.Println("hello from go")
-name := "ulas"
-fmt.Printf("hello %s\n", name)
-```
-
-**Rust**
-```rust
-println!("hello from rust");
-let name = "ulas";
-println!("hi {}", name);
-```
-
-(Full files are in each language folder.)
+| Language     | Code                          | Notes                     |
+|--------------|-------------------------------|---------------------------|
+| Python       | `name = "ulas"`               | Dynamic typing            |
+| JavaScript   | `let name = "ulas"`           | `let` / `const`           |
+| Go           | `name := "ulas"`              | Short declaration         |
+| Rust         | `let name = "ulas"`           | Immutable by default      |
+| Java         | `String name = "ulas"`        | Static typing             |
+| TypeScript   | `let name: string = "ulas"`   | Optional types            |
+| Ruby         | `name = "ulas"`               | Dynamic                   |
+| PHP          | `$name = "ulas"`              | `$` prefix                |
+| C++          | `std::string name = "ulas"`   | Static                    |
+| C#           | `string name = "ulas"`        | Static                    |
 
 ---
 
-## How to run the examples
+## How to run
+
+### One command runner
+
+```bash
+chmod +x run.sh
+
+./run.sh python 03          # run lesson 03 in Python
+./run.sh all 01             # run Hello World in all languages
+```
+
+### Manual commands
 
 | Language     | Command                                  |
 |--------------|------------------------------------------|
@@ -141,45 +129,32 @@ println!("hi {}", name);
 | JavaScript   | `node javascript/01_hello.js`            |
 | Go           | `go run go/01_hello.go`                  |
 | Rust         | `rustc rust/01_hello.rs && ./01_hello`   |
-| Java         | `javac java/01_hello.java && java -cp java Hello` |
+| Java         | `javac java/01_hello.java && java ...`   |
 | TypeScript   | `npx ts-node typescript/01_hello.ts`     |
 | Ruby         | `ruby ruby/01_hello.rb`                  |
 | PHP          | `php php/01_hello.php`                   |
-| C#           | compile with `csc` or use `dotnet script`|
-| C++          | `g++ cpp/hello.cpp -o hello && ./hello`  |
+| C++          | `g++ cpp/01_hello.cpp -o hello && ./hello` |
+| C#           | compile with `csc` or `dotnet`           |
 
 ---
 
-## Explanations in other languages
+## Explanations
 
-Inside [`explanations/`](explanations/) you will find the same concepts explained in:
+Inside [`explanations/`](explanations/):
 
-**Turkish** and **English** → full lessons  
-**Spanish, French, German, Portuguese, Russian, Arabic, Chinese, Japanese, Korean, Hindi, Italian, Dutch, Polish, Indonesian, Vietnamese, Thai, Swedish, Greek, Romanian, Ukrainian** → intro files (more coming)
+- **Turkish** & **English** → full lesson explanations
+- 20 other languages → intro files (quality over quantity)
 
 ---
 
 ## Contributing
 
-Want to help?
-
-- Finish missing languages
+- Add more advanced topics (Strings, Error Handling, File I/O...)
 - Improve explanations
-- Add more natural languages
-- Fix examples
+- Add mini projects in multiple languages
+- Improve the runner
 
-1. Fork
-2. Create a branch
-3. Open a Pull Request
-
-Keep it simple and consistent.
-
----
-
-## Topics (add these in repo settings)
-
-`python` `javascript` `go` `rust` `java` `cpp` `typescript` `ruby` `php` `csharp`  
-`polyglot` `crash-course` `learn-to-code` `side-by-side` `beginner` `education`
+1. Fork → branch → PR
 
 ---
 
