@@ -6,21 +6,19 @@ Same small projects in multiple languages.
 
 | Project            | Count | Languages |
 |--------------------|-------|-----------|
-| Calculator         | **10/10** | Python, JS, Go, Rust, Java, TS, PHP, Ruby, C#, C++ |
-| Number Guessing    | 7 | Python, JS, Go, Rust, Java, PHP, Ruby |
-| Password Generator | 6 | Python, JS, Go, Rust, Java, PHP |
+| Calculator         | **10/10** | All |
+| Number Guessing    | **10/10** | All |
+| Password Generator | **10/10** | All |
 | Todo CLI           | 5 | Python, JS, Go, Rust, PHP |
 
 ## Structure
 
 ```text
 projects/
-  calculator/
-    python/ javascript/ go/ rust/ java/ typescript/
-    php/ ruby/ csharp/ cpp/
-  number-guessing/
-  password-generator/
-  todo-cli/
+  calculator/          # 10 languages
+  number-guessing/     # 10 languages
+  password-generator/  # 10 languages
+  todo-cli/            # 5 languages
 ```
 
 Each implementation should behave the same so you can compare syntax side by side.
