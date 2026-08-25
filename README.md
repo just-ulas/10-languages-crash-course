@@ -29,135 +29,95 @@ That’s the whole point of this repo.
 Most tutorials teach one language at a time.  
 This one shows the **same topic** implemented in 10 languages so you can actually see the differences and similarities.
 
-Perfect if you:
-- Are learning a new language and already know another
-- Want to understand concepts by comparing syntax
-- Prefer short practical examples over long articles
-
 ---
 
 ## Progress
 
-| Language       | Status     | Progress        |
-|----------------|------------|-----------------|
-| Python         | Complete   | ██████████ 100% |
-| JavaScript     | Complete   | ██████████ 100% |
-| Go             | Complete   | ██████████ 100% |
-| Rust           | Complete   | ██████████ 100% |
-| Java           | Complete   | ██████████ 100% |
-| TypeScript     | Complete   | ██████████ 100% |
-| Ruby           | Complete   | ██████████ 100% |
-| C++            | Complete   | ██████████ 100% |
-| PHP            | Complete   | ██████████ 100% |
-| C#             | Complete   | ██████████ 100% |
+| Language       | Core 01-08 | Extra (09+) |
+|----------------|------------|--------------|
+| Python         | ✅ 100%    | 09–11        |
+| JavaScript     | ✅ 100%    | 09–11        |
+| Go             | ✅ 100%    | 09–11        |
+| Rust           | ✅ 100%    | 09–11        |
+| Java           | ✅ 100%    | 09           |
+| TypeScript     | ✅ 100%    | 09           |
+| Ruby           | ✅ 100%    | 09–10        |
+| C++            | ✅ 100%    | 09           |
+| PHP            | ✅ 100%    | 09–10        |
+| C#             | ✅ 100%    | 09–10        |
 
-All 10 languages now have the same 8 core lessons.
+---
+
+## Topics
+
+| #  | Topic              |
+|----|--------------------|
+| 01 | Hello World        |
+| 02 | Variables          |
+| 03 | If / Else          |
+| 04 | Loops              |
+| 05 | Functions          |
+| 06 | Arrays / Lists     |
+| 07 | Maps / Dicts       |
+| 08 | Classes / Structs  |
+| 09 | Strings            |
+| 10 | User Input         |
+| 11 | Error Handling     |
+
+More coming: File I/O, Modules, Enums, Generics, Async, Testing, JSON, HTTP...
+
+---
+
+## How to run
+
+```bash
+chmod +x run.sh
+
+./run.sh python 03          # single language + lesson
+./run.sh all 01             # Hello World in all 10 languages
+./run.sh csharp 01          # C# now actually runs (mcs/mono, csc or dotnet)
+```
+
+---
+
+## Extra files
+
+| File / Folder          | What it is                          |
+|------------------------|-------------------------------------|
+| `COMPARISON.md`        | Typing, memory, OOP, concurrency... |
+| `challenges/`          | Practice challenges (e.g. FizzBuzz) |
+| `projects/calculator/` | Mini project in multiple languages  |
+| `explanations/`        | Turkish + English + others          |
+| `LICENSE`              | MIT                                 |
+| `CONTRIBUTING.md`      | How to contribute                   |
 
 ---
 
 ## Structure
 
 ```text
-├── python/          01_hello → 08_classes
-├── javascript/
-├── go/
-├── rust/
-├── java/
-├── typescript/
-├── ruby/
-├── cpp/
-├── php/
-├── csharp/
-├── explanations/    Turkish + English (full) + 20 more
-├── run.sh           One command runner
-└── .github/workflows/ci.yml
+├── python/ … csharp/     same lesson numbers
+├── explanations/
+├── challenges/
+├── projects/
+│   └── calculator/
+├── run.sh
+├── COMPARISON.md
+└── .github/
 ```
-
-Every folder uses the **exact same lesson numbers**.  
-Open `03_if` in any language → instant comparison.
-
----
-
-## Topics covered (core 8)
-
-| #  | Topic             | What you learn                     |
-|----|-------------------|------------------------------------|
-| 01 | Hello World       | Printing to the screen             |
-| 02 | Variables         | Types & declaration                |
-| 03 | If / Else         | Conditionals                       |
-| 04 | Loops             | for / while                        |
-| 05 | Functions         | Defining & calling                 |
-| 06 | Arrays / Lists    | Collections                        |
-| 07 | Maps / Dicts      | Key-value pairs                    |
-| 08 | Classes / Structs | Simple objects                     |
-
----
-
-## Side-by-side example (Variables)
-
-| Language     | Code                          | Notes                     |
-|--------------|-------------------------------|---------------------------|
-| Python       | `name = "ulas"`               | Dynamic typing            |
-| JavaScript   | `let name = "ulas"`           | `let` / `const`           |
-| Go           | `name := "ulas"`              | Short declaration         |
-| Rust         | `let name = "ulas"`           | Immutable by default      |
-| Java         | `String name = "ulas"`        | Static typing             |
-| TypeScript   | `let name: string = "ulas"`   | Optional types            |
-| Ruby         | `name = "ulas"`               | Dynamic                   |
-| PHP          | `$name = "ulas"`              | `$` prefix                |
-| C++          | `std::string name = "ulas"`   | Static                    |
-| C#           | `string name = "ulas"`        | Static                    |
-
----
-
-## How to run
-
-### One command runner
-
-```bash
-chmod +x run.sh
-
-./run.sh python 03          # run lesson 03 in Python
-./run.sh all 01             # run Hello World in all languages
-```
-
-### Manual commands
-
-| Language     | Command                                  |
-|--------------|------------------------------------------|
-| Python       | `python python/01_hello.py`              |
-| JavaScript   | `node javascript/01_hello.js`            |
-| Go           | `go run go/01_hello.go`                  |
-| Rust         | `rustc rust/01_hello.rs && ./01_hello`   |
-| Java         | `javac java/01_hello.java && java ...`   |
-| TypeScript   | `npx ts-node typescript/01_hello.ts`     |
-| Ruby         | `ruby ruby/01_hello.rb`                  |
-| PHP          | `php php/01_hello.php`                   |
-| C++          | `g++ cpp/01_hello.cpp -o hello && ./hello` |
-| C#           | compile with `csc` or `dotnet`           |
-
----
-
-## Explanations
-
-Inside [`explanations/`](explanations/):
-
-- **Turkish** & **English** → full lesson explanations
-- 20 other languages → intro files (quality over quantity)
 
 ---
 
 ## Contributing
 
-- Add more advanced topics (Strings, Error Handling, File I/O...)
-- Improve explanations
-- Add mini projects in multiple languages
-- Improve the runner
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-1. Fork → branch → PR
+Most needed right now:
+- Finish 09–15 for all languages
+- More mini projects
+- Better explanations
+- More challenges
 
 ---
 
 **Compare. Learn. Switch languages faster.**
-
-If this helps you, leave a star.
