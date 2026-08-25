@@ -23,21 +23,28 @@ C#              →  Console.WriteLine("hello")
 
 ## Topics & Coverage
 
-| #  | Topic            | Languages                      | Challenge |
-|----|------------------|--------------------------------|-----------|
-| 01–08 | Core           | ✅ All 10                      | partial   |
-| 09 | Strings          | ✅ All 10                      | ✅        |
-| 10 | User Input       | Most                           | ✅        |
-| 11 | Error Handling   | Most                           | ✅        |
-| 12 | File I/O         | Py, JS, Go, Rust               | ✅        |
-| 13 | Modules          | Py, JS, Go, Rust               | ✅        |
-| 14 | JSON             | Py, JS, Go, Rust               | ✅        |
-| 15 | Enums            | Py, JS, Go, Rust, TS, Java, C# | ✅        |
-| 16 | Async            | Py, JS, Go                     | ✅        |
-| 17 | HTTP / API       | Py, JS, Go                     | ✅        |
-| 18 | Testing          | Py, JS, Go, Rust               | ✅        |
-| 19 | Packages         | Py, JS, Go, Rust               | ✅        |
-| 20 | Concurrency      | Py, Go                         | ✅        |
+| #  | Topic            | Languages / mechanism                          | Challenge |
+|----|------------------|------------------------------------------------|-----------|
+| 01 | Hello World      | ✅ All 10                                      | ✅        |
+| 02 | Variables        | ✅ All 10                                      | ✅        |
+| 03 | If / Else        | ✅ All 10                                      | ✅        |
+| 04 | Loops            | ✅ All 10                                      | ✅        |
+| 05 | Functions        | ✅ All 10                                      | ✅        |
+| 06 | Arrays / Lists   | ✅ All 10                                      | ✅        |
+| 07 | Maps / Dicts     | ✅ All 10                                      | ✅        |
+| 08 | Classes/Structs  | ✅ All 10                                      | ✅        |
+| 09 | Strings          | ✅ All 10                                      | ✅        |
+| 10 | User Input       | Most                                           | ✅        |
+| 11 | Error Handling   | try/catch · err!=nil · Result                  | ✅        |
+| 12 | File I/O         | Py, JS, Go, Rust                               | ✅        |
+| 13 | Modules          | Py, JS, Go, Rust                               | ✅        |
+| 14 | JSON             | Py, JS, Go, Rust                               | ✅        |
+| 15 | Enums            | Py, JS, Go, Rust, TS, Java, C#                 | ✅        |
+| 16 | Async            | Py `asyncio` · JS `Promise` · Go `goroutine`   | ✅        |
+| 17 | HTTP / API       | Py `requests` · JS `fetch` · Go `net/http`     | ✅        |
+| 18 | Testing          | Py, JS, Go, Rust self-checks                   | ✅        |
+| 19 | Packages         | pip · npm · go mod · cargo                     | ✅        |
+| 20 | Concurrency      | Py `threading` · Go `goroutine+WaitGroup`      | ✅        |
 
 > Advanced topics are not forced into every language on purpose.
 
@@ -47,7 +54,7 @@ C#              →  Console.WriteLine("hello")
 
 ```bash
 chmod +x run.sh
-./run.sh python 18
+./run.sh python 09
 ./run.sh all 01
 ./run.sh csharp 01
 ```
@@ -56,11 +63,11 @@ chmod +x run.sh
 
 ## Mini Projects
 
-| Project            | Languages |
-|--------------------|-----------|
-| **Calculator**     | **10/10** — all languages |
-| Number Guessing    | 7 — Py, JS, Go, Rust, Java, PHP, Ruby |
-| Password Generator | 6 — Py, JS, Go, Rust, Java, PHP |
+| Project            | Status |
+|--------------------|--------|
+| **Calculator**     | **10/10** |
+| **Number Guessing**| **10/10** |
+| **Password Generator** | **10/10** |
 | Todo CLI           | 5 — Py, JS, Go, Rust, PHP |
 
 ---
@@ -68,7 +75,7 @@ chmod +x run.sh
 ## Extra
 
 - `COMPARISON.md`
-- `challenges/` — every major topic
+- `challenges/` — **all 20 topics**
 - `explanations/tr` + `en`
 - MIT + CONTRIBUTING + issue/PR templates
 - CI on push
