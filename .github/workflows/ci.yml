@@ -7,79 +7,154 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  compile-and-run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - uses: actions/setup-go@v5
         with:
           go-version: '1.22'
 
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
 
-      - name: Run Python examples (skip input)
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install PHP Ruby g++ mono
         run: |
+          sudo apt-get update
+          sudo apt-get install -y php-cli ruby g++ mono-mcs mono-runtime
+
+      # Only run non-interactive lessons (skip *input* and projects that need stdin)
+      - name: Python non-interactive lessons
+        run: |
+          set -e
           for f in python/*.py; do
             case "$f" in
-              *input*|*error_handling*) echo "skip $f" ;;
-              *) python "$f" || true ;;
+              *input*|*10_*) echo "skip $f" ;;
+              *) echo "RUN $f"; python "$f" ;;
             esac
           done
 
-      - name: Run JavaScript examples (skip input)
+      - name: JavaScript non-interactive lessons
         run: |
+          set -e
           for f in javascript/*.js; do
             case "$f" in
-              *input*) echo "skip $f" ;;
-              *) node "$f" || true ;;
+              *input*|*10_*) echo "skip $f" ;;
+              *) echo "RUN $f"; node "$f" ;;
             esac
           done
 
-      - name: Run Go examples (skip input)
+      - name: Go non-interactive lessons
         run: |
+          set -e
           for f in go/*.go; do
             case "$f" in
-              *input*) echo "skip $f" ;;
-              *) go run "$f" || true ;;
+              *input*|*10_*) echo "skip $f" ;;
+              *) echo "RUN $f"; go run "$f" ;;
             esac
           done
 
-      - name: Run Rust examples (skip input)
+      - name: Rust non-interactive lessons
         run: |
+          set -e
           for f in rust/*.rs; do
             case "$f" in
-              *input*) echo "skip $f" ;;
-              *) rustc "$f" -o /tmp/out && /tmp/out || true ;;
+              *input*|*10_*) echo "skip $f" ;;
+              *)
+                echo "RUN $f"
+                rustc "$f" -o /tmp/out
+                /tmp/out
+                ;;
             esac
           done
 
-      - name: Run PHP examples
+      - name: PHP non-interactive lessons
         run: |
+          set -e
           for f in php/*.php; do
             case "$f" in
-              *input*) echo "skip $f" ;;
-              *) php "$f" || true ;;
+              *input*|*10_*) echo "skip $f" ;;
+              *) echo "RUN $f"; php "$f" ;;
             esac
           done
 
-      - name: Run Ruby examples
+      - name: Ruby non-interactive lessons
         run: |
+          set -e
           for f in ruby/*.rb; do
             case "$f" in
-              *input*) echo "skip $f" ;;
-              *) ruby "$f" || true ;;
+              *input*|*10_*) echo "skip $f" ;;
+              *) echo "RUN $f"; ruby "$f" ;;
             esac
           done
+
+      - name: Java compile + run non-interactive
+        run: |
+          set -e
+          for f in java/*.java; do
+            case "$f" in
+              *input*|*10_*) echo "skip $f" ;;
+              *)
+                echo "RUN $f"
+                classname=$(grep -E 'public[[:space:]]+class[[:space:]]+[A-Za-z0-9_]+' "$f" | head -1 | sed -E 's/.*class[[:space:]]+([A-Za-z0-9_]+).*/\1/')
+                javac "$f" -d /tmp
+                java -cp /tmp "$classname"
+                ;;
+            esac
+          done
+
+      - name: C++ compile + run non-interactive
+        run: |
+          set -e
+          for f in cpp/*.cpp; do
+            case "$f" in
+              *input*|*10_*) echo "skip $f" ;;
+              *)
+                echo "RUN $f"
+                g++ "$f" -o /tmp/cpp_out
+                /tmp/cpp_out
+                ;;
+            esac
+          done
+
+      - name: C# compile + run (mono) non-interactive
+        run: |
+          set -e
+          for f in csharp/*.cs; do
+            case "$f" in
+              *input*|*10_*) echo "skip $f" ;;
+              *)
+                echo "RUN $f"
+                mcs "$f" -out:/tmp/cs.exe
+                mono /tmp/cs.exe
+                ;;
+            esac
+          done
+
+      - name: TypeScript check (transpile with tsc if available)
+        run: |
+          set -e
+          npm install -g typescript 2>/dev/null || true
+          if command -v tsc >/dev/null 2>&1; then
+            for f in typescript/*.ts; do
+              case "$f" in
+                *input*|*10_*) echo "skip $f" ;;
+                *) echo "CHECK $f"; tsc --noEmit --esModuleInterop --module commonjs "$f" || tsc --noEmit "$f" ;;
+              esac
+            done
+          else
+            echo "tsc not available, skip TS"
+          fi
