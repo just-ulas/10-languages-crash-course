@@ -38,7 +38,6 @@ jobs:
           sudo apt-get install -y php-cli ruby g++ mono-mcs mono-runtime
           npm install -g typescript
 
-      # Skip: stdin lessons + network-dependent HTTP demos
       - name: Python smoke
         run: |
           set -e
@@ -113,7 +112,6 @@ jobs:
               *input*|*/10_*) echo "skip $f"; continue ;;
             esac
             echo "RUN $f"
-            # public class must match filename — copy to temp with correct name
             classname=$(grep -E 'public[[:space:]]+class[[:space:]]+[A-Za-z0-9_]+' "$f" | head -1 | sed -E 's/.*class[[:space:]]+([A-Za-z0-9_]+).*/\1/')
             if [ -z "$classname" ]; then
               classname=$(grep -E 'class[[:space:]]+[A-Za-z0-9_]+' "$f" | head -1 | sed -E 's/.*class[[:space:]]+([A-Za-z0-9_]+).*/\1/')
@@ -149,10 +147,11 @@ jobs:
         run: |
           set -e
           command -v tsc
+          # lib without DOM — these are CLI scripts, not browser code
           for f in typescript/*.ts; do
             case "$f" in
               *input*|*/10_*) echo "skip $f"; continue ;;
             esac
             echo "CHECK $f"
-            tsc --noEmit --esModuleInterop --module commonjs --target ES2020 "$f"
+            tsc --noEmit --lib ES2020 --module commonjs --target ES2020 --esModuleInterop "$f"
           done
