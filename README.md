@@ -1,9 +1,9 @@
 # 10 languages crash course
 
 one big personal notes style course.
-same basic topics taught in 10 different languages side by side.
+same basic topics taught in 10 programming languages side by side.
 
-languages:
+## programming languages
 - python
 - javascript
 - go
@@ -15,10 +15,10 @@ languages:
 - php
 - csharp
 
-## structure
+## structure of code
 
-each language has its own folder.
-inside every folder you will find the same numbered lessons:
+each programming language has its own folder.
+inside you find the same numbered lessons:
 
 01_hello
 02_variables
@@ -29,10 +29,35 @@ inside every folder you will find the same numbered lessons:
 07_maps
 08_classes
 
-read the same lesson number across languages to compare how each language does the same thing.
+## explanations in many human languages
 
-this is not a polished official tutorial.
-it is just my notes and examples while learning / comparing languages.
-some comments are messy on purpose.
+look inside the `explanations/` folder.
 
-feel free to use whatever is useful.
+there you will find the same concepts explained in:
+
+- turkish (tr) - full lessons
+- english (en) - full lessons
+- spanish (es)
+- french (fr)
+- german (de)
+- portuguese (pt)
+- russian (ru)
+- arabic (ar)
+- chinese (zh)
+- japanese (ja)
+- korean (ko)
+- hindi (hi)
+- italian (it)
+- dutch (nl)
+- polish (pl)
+- indonesian (id)
+- vietnamese (vi)
+- thai (th)
+- swedish (sv)
+- greek (el)
+- romanian (ro)
+- ukrainian (uk)
+
+the code stays the same. only the explanations are in different natural languages.
+
+this is still personal notes style, not a perfect polished course.
