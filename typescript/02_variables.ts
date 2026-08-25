@@ -1,9 +1,11 @@
-let name: string = "ulas";
+export {};
+
+let personName: string = "ulas";
 let age: number = 20;
 let height: number = 1.75;
 let isStudent: boolean = true;
 
-console.log(name, age, height, isStudent);
+console.log(personName, age, height, isStudent);
 
 age = 21;
 console.log("new age:", age);
