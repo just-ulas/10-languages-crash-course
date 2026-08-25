@@ -16,55 +16,30 @@ C#              →  Console.WriteLine("hello")
 ```
 
 One idea. Ten different ways to write it.  
-That’s the whole point of this repo.
-
 **Learn by comparing.**
 
 [![CI](https://github.com/just-ulas/10-languages-crash-course/actions/workflows/ci.yml/badge.svg)](https://github.com/just-ulas/10-languages-crash-course/actions)
 
 ---
 
-## Why this exists
-
-Most tutorials teach one language at a time.  
-This one shows the **same topic** implemented in 10 languages so you can actually see the differences and similarities.
-
----
-
-## Progress
-
-| Language       | Core 01-08 | Extra (09+) |
-|----------------|------------|--------------|
-| Python         | ✅ 100%    | 09–11        |
-| JavaScript     | ✅ 100%    | 09–11        |
-| Go             | ✅ 100%    | 09–11        |
-| Rust           | ✅ 100%    | 09–11        |
-| Java           | ✅ 100%    | 09           |
-| TypeScript     | ✅ 100%    | 09           |
-| Ruby           | ✅ 100%    | 09–10        |
-| C++            | ✅ 100%    | 09           |
-| PHP            | ✅ 100%    | 09–10        |
-| C#             | ✅ 100%    | 09–10        |
-
----
-
 ## Topics
 
-| #  | Topic              |
-|----|--------------------|
-| 01 | Hello World        |
-| 02 | Variables          |
-| 03 | If / Else          |
-| 04 | Loops              |
-| 05 | Functions          |
-| 06 | Arrays / Lists     |
-| 07 | Maps / Dicts       |
-| 08 | Classes / Structs  |
-| 09 | Strings            |
-| 10 | User Input         |
-| 11 | Error Handling     |
-
-More coming: File I/O, Modules, Enums, Generics, Async, Testing, JSON, HTTP...
+| #  | Topic            | Status                          |
+|----|------------------|---------------------------------|
+| 01 | Hello World      | ✅ 10 languages                 |
+| 02 | Variables        | ✅ 10 languages                 |
+| 03 | If / Else        | ✅ 10 languages                 |
+| 04 | Loops            | ✅ 10 languages + challenge     |
+| 05 | Functions        | ✅ 10 languages + challenge     |
+| 06 | Arrays / Lists   | ✅ 10 languages                 |
+| 07 | Maps / Dicts     | ✅ 10 languages                 |
+| 08 | Classes/Structs  | ✅ 10 languages                 |
+| 09 | Strings          | ✅ 10 languages + challenge     |
+| 10 | User Input       | ✅ most languages               |
+| 11 | Error Handling   | ✅ most languages + challenge   |
+| 12 | File I/O         | ✅ Python, JS, Go, Rust         |
+| 13 | Modules          | ✅ Python, JS, Go, Rust         |
+| 14 | JSON             | ✅ Python, JS, Go, Rust         |
 
 ---
 
@@ -72,51 +47,49 @@ More coming: File I/O, Modules, Enums, Generics, Async, Testing, JSON, HTTP...
 
 ```bash
 chmod +x run.sh
-
-./run.sh python 03          # single language + lesson
-./run.sh all 01             # Hello World in all 10 languages
-./run.sh csharp 01          # C# now actually runs (mcs/mono, csc or dotnet)
+./run.sh python 03
+./run.sh all 01          # includes real C# execution now
+./run.sh csharp 01
 ```
 
 ---
 
-## Extra files
+## Mini Projects
 
-| File / Folder          | What it is                          |
-|------------------------|-------------------------------------|
-| `COMPARISON.md`        | Typing, memory, OOP, concurrency... |
-| `challenges/`          | Practice challenges (e.g. FizzBuzz) |
-| `projects/calculator/` | Mini project in multiple languages  |
-| `explanations/`        | Turkish + English + others          |
-| `LICENSE`              | MIT                                 |
-| `CONTRIBUTING.md`      | How to contribute                   |
+| Project              | Languages so far      |
+|----------------------|-----------------------|
+| Calculator           | Python, JS, Go, Rust  |
+| Number Guessing      | Python, JS, Go        |
+| Password Generator   | Python, JS            |
+
+See `projects/` folder.
+
+---
+
+## Extra
+
+- `COMPARISON.md` → typing, memory, OOP, concurrency, packages
+- `challenges/` → practice tasks
+- `explanations/tr` + `explanations/en` → growing
+- `LICENSE` (MIT) + `CONTRIBUTING.md` + issue/PR templates
+- CI runs on every push (skips interactive input files)
 
 ---
 
 ## Structure
 
 ```text
-├── python/ … csharp/     same lesson numbers
+├── python/ … csharp/     lessons 01–14+
 ├── explanations/
 ├── challenges/
 ├── projects/
-│   └── calculator/
+│   ├── calculator/
+│   ├── number-guessing/
+│   └── password-generator/
 ├── run.sh
 ├── COMPARISON.md
 └── .github/
 ```
-
----
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Most needed right now:
-- Finish 09–15 for all languages
-- More mini projects
-- Better explanations
-- More challenges
 
 ---
 
