@@ -1,32 +1,31 @@
 # explanations
 
-this folder contains explanations of the same concepts in many human languages.
+Natural-language explanations of the same programming concepts.
 
-the code examples stay in the language folders (python, javascript, go...). 
-here we just explain what is going on in different natural languages.
+Code lives in language folders (`python/`, `go/`, …).  
+This folder only explains what is going on.
 
-languages available (or coming):
-- tr  (turkish)
-- en  (english)
-- es  (spanish)
-- fr  (french)
-- de  (german)
-- pt  (portuguese)
-- ru  (russian)
-- ar  (arabic)
-- zh  (chinese)
-- ja  (japanese)
-- ko  (korean)
-- hi  (hindi)
-- it  (italian)
-- nl  (dutch)
-- pl  (polish)
-- id  (indonesian)
-- vi  (vietnamese)
-- th  (thai)
-- sv  (swedish)
-- el  (greek)
-- ro  (romanian)
-- uk  (ukrainian)
+## Status
 
-each language folder has the same lesson numbers so you can compare.
+| Folder | Quality |
+|--------|---------|
+| `tr/`  | Main explanations (growing) |
+| `en/`  | Main explanations (growing) |
+| others | Intro / partial — quality over quantity |
+
+**Available lesson files vary.**  
+Not every number exists in every natural-language folder yet.
+
+Turkish and English are the priority. Other languages are welcome if the content is actually good — incomplete translations are worse than missing files.
+
+## Structure
+
+```text
+explanations/
+  en/
+    01_hello.md
+    02_variables.md
+    ...
+  tr/
+    ...
+```
