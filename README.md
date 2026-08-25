@@ -37,7 +37,7 @@ C#              →  Console.WriteLine("hello")
 | 17 | HTTP / API       | Py, JS, Go                     | ✅        |
 | 18 | Testing          | Py, JS, Go, Rust               | ✅        |
 | 19 | Packages         | Py, JS, Go, Rust               | ✅        |
-| 20 | Concurrency      | Py, Go                         | —         |
+| 20 | Concurrency      | Py, Go                         | ✅        |
 
 > Advanced topics are not forced into every language on purpose.
 
@@ -56,19 +56,19 @@ chmod +x run.sh
 
 ## Mini Projects
 
-| Project            | Languages                              |
-|--------------------|----------------------------------------|
-| Calculator         | Python, JS, Go, Rust, Java, TS, PHP, Ruby |
-| Number Guessing    | Python, JS, Go, Rust                   |
-| Password Generator | Python, JS, Go, Rust                   |
-| Todo CLI           | Python, JS, Go                         |
+| Project            | Languages |
+|--------------------|-----------|
+| **Calculator**     | **10/10** — all languages |
+| Number Guessing    | 7 — Py, JS, Go, Rust, Java, PHP, Ruby |
+| Password Generator | 6 — Py, JS, Go, Rust, Java, PHP |
+| Todo CLI           | 5 — Py, JS, Go, Rust, PHP |
 
 ---
 
 ## Extra
 
 - `COMPARISON.md`
-- `challenges/` — almost every topic
+- `challenges/` — every major topic
 - `explanations/tr` + `en`
 - MIT + CONTRIBUTING + issue/PR templates
 - CI on push
