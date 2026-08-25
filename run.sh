@@ -23,8 +23,6 @@ esac
 LESSON=$(printf "%02d" "$LESSON")
 
 first_file() {
-  # usage: first_file pattern
-  # sets global FILE or returns 1
   local pattern=$1
   local matches=( $pattern )
   if [ ! -e "${matches[0]:-}" ]; then
@@ -62,7 +60,9 @@ run_one() {
       if [ -z "$classname" ]; then
         classname=$(grep -E 'class[[:space:]]+[A-Za-z0-9_]+' "$FILE" | head -1 | sed -E 's/.*class[[:space:]]+([A-Za-z0-9_]+).*/\1/')
       fi
-      javac "$FILE" -d /tmp
+      # Java requires public class filename == ClassName.java
+      cp "$FILE" "/tmp/${classname}.java"
+      javac "/tmp/${classname}.java" -d /tmp
       java -cp /tmp "$classname"
       ;;
     typescript)
