@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run Python examples
+        run: |
+          for f in python/*.py; do python "$f"; done
+
+      - name: Run JavaScript examples
+        run: |
+          for f in javascript/*.js; do node "$f"; done
+
+      - name: Run Go examples
+        run: |
+          for f in go/*.go; do go run "$f"; done
+
+      - name: Run Rust examples
+        run: |
+          for f in rust/*.rs; do rustc "$f" -o /tmp/out && /tmp/out; done
+
+      - name: Run PHP examples
+        run: |
+          for f in php/*.php; do php "$f"; done
+
+      - name: Run Ruby examples
+        run: |
+          for f in ruby/*.rb; do ruby "$f"; done
