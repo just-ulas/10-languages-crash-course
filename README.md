@@ -18,7 +18,9 @@ C#              →  Console.WriteLine("hello")
 **Core (01–10) aims for all 10 languages.**  
 **Intermediate / advanced topics exist where they make sense** (mainly Python, JS, Go, Rust).
 
-[![CI](https://github.com/just-ulas/10-languages-crash-course/actions/workflows/ci.yml/badge.svg)](https://github.com/just-ulas/10-languages-crash-course/actions)
+[![Smoke](https://github.com/just-ulas/10-languages-crash-course/actions/workflows/ci.yml/badge.svg)](https://github.com/just-ulas/10-languages-crash-course/actions)
+
+CI = **smoke test** (compile/run non-interactive lessons). Not golden-output tests.
 
 ---
 
@@ -40,9 +42,7 @@ C#              →  Console.WriteLine("hello")
 | 19 Packages | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |
 | 20 Concurrency | ✓ thread |  | ✓ WaitGroup |  |  |  |  |  |  |  |
 
-`~` = partial / may exist under a nearby name. Empty = not present yet.
-
-This is intentional: forcing async or ownership-heavy topics into every language produces fake comparisons.
+`~` = partial. Empty = not present yet. Intentional — no fake comparisons.
 
 ---
 
@@ -51,11 +51,11 @@ This is intentional: forcing async or ownership-heavy topics into every language
 ```bash
 chmod +x run.sh
 ./run.sh python 9
-./run.sh java 1      # resolves public class name correctly
-./run.sh all 1
+./run.sh java 1      # public class name resolved from source
+./run.sh all 1       # exits non-zero if any language fails
 ```
 
-Interactive lessons (`*input*`) are skipped in CI; run those locally.
+Interactive `10_input` lessons are skipped in smoke CI; run those locally.
 
 ---
 
@@ -65,23 +65,19 @@ Interactive lessons (`*input*`) are skipped in CI; run those locally.
 |---------|--------|------|
 | Calculator | 10/10 | beginner |
 | Number Guessing | 10/10 | beginner |
-| Password Generator | 10/10 | use CSPRNG (`secrets` / `crypto`) |
+| Password Generator | 10/10 | CSPRNG preferred (`secrets` / `crypto`) |
 | Todo CLI | 5 langs | no persistence yet |
 
 ---
 
 ## Challenges
 
-`challenges/` has a prompt for topics 01–20.  
-They are exercise prompts (task + example), not full graded test harnesses yet.
+Exercise prompts for 01–20. Not a graded harness yet.
 
 ---
 
 ## Docs
 
-- `COMPARISON.md` — high-level language differences
-- `explanations/en` + `tr` — growing; other langs partial
-- `CONTRIBUTING.md` — current priorities
-- MIT license, issue + PR templates
+- `COMPARISON.md` · `explanations/en`+`tr` · `CONTRIBUTING.md` · MIT · issue/PR templates
 
 **https://github.com/just-ulas/10-languages-crash-course**
