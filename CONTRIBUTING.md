@@ -2,39 +2,44 @@
 
 Thanks for wanting to improve this project.
 
-## What we need most
+## What we need most (current)
 
-1. More lessons (09+): Strings, Input, Error Handling, File I/O, Modules, Enums, Generics, Interfaces, Async, Testing, JSON, HTTP
-2. Challenges for each lesson (`challenge.md`)
-3. Mini projects in multiple languages
-4. Better explanations (especially Turkish & English)
-5. Fixes and consistency improvements
+1. **Quality & consistency** — same lesson should teach the same idea across languages
+2. **Fill gaps** — some languages stop at ~10; intermediate topics only exist in Py/JS/Go/Rust
+3. **Better explanations** — especially `explanations/en` and `explanations/tr`
+4. **CI / runner fixes** — keep examples compiling and runnable
+5. **Stronger challenges** — expected output, hints, optional solutions
+6. **Better mini projects** — persistence (e.g. Todo + JSON), intermediate apps
+
+We are **not** trying to force every advanced topic into all 10 languages.
+
+## Curriculum shape
+
+| Level        | Lessons | Expectation                          |
+|--------------|---------|--------------------------------------|
+| Core         | 01–10   | All 10 languages                     |
+| Intermediate | 11–15   | Main languages (Py, JS, Go, Rust…)   |
+| Advanced     | 16–20   | Where it makes sense                 |
 
 ## How to contribute
 
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/my-change`
-3. Keep the same structure and naming:
-   - `01_hello.py`, `02_variables.js`, etc.
-   - Same lesson numbers across languages
-4. Make your changes
-5. Open a Pull Request
+1. Fork
+2. Branch: `git checkout -b feature/my-change`
+3. Naming: `01_hello.py`, `02_variables.js`, same numbers across languages
+4. PR
 
 ## Code style
 
-- Keep examples short and clear
-- Prefer simple, readable code over clever code
-- Try to make the same lesson do roughly the same thing in every language
-- Comments can be casual (this is personal-notes style)
+- Short, readable examples
+- Same behavior across languages when possible
+- Casual comments OK (personal-notes style)
+- Do not hide failures in CI (`|| true` is not welcome)
 
-## Adding a new lesson
+## Adding a lesson
 
-1. Create the file in every language folder (or at least the main ones)
-2. Add a short explanation in `explanations/en/` and `explanations/tr/`
-3. Optionally add a `challenge.md` next to the lesson or in a challenges folder
+1. Add the file in the languages you support
+2. Add `explanations/en/` + `explanations/tr/` if you can
+3. Add `challenges/NN_topic_challenge.md`
+4. Update README coverage if needed
 
-## Mini projects
-
-If you add a mini project, put it under `projects/` and try to implement the same idea in as many languages as possible.
-
-Thanks!
+Thanks.
