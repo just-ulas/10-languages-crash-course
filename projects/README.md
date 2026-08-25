@@ -1,36 +1,26 @@
 # Mini Projects
 
-Same small projects implemented in as many languages as possible.
+Same small projects in multiple languages.
 
-## Beginner
+## Status
 
-- [ ] Calculator
-- [ ] Number Guessing Game
-- [ ] Todo CLI
+| Project            | Count | Languages |
+|--------------------|-------|-----------|
+| Calculator         | **10/10** | Python, JS, Go, Rust, Java, TS, PHP, Ruby, C#, C++ |
+| Number Guessing    | 7 | Python, JS, Go, Rust, Java, PHP, Ruby |
+| Password Generator | 6 | Python, JS, Go, Rust, Java, PHP |
+| Todo CLI           | 5 | Python, JS, Go, Rust, PHP |
 
-## Intermediate
-
-- [ ] Password Generator
-- [ ] Quiz Game
-- [ ] File Organizer
-
-## Advanced
-
-- [ ] Expense Tracker (CLI)
-- [ ] Simple HTTP Client
-- [ ] Tiny REST API
-
-Each project should live in its own folder and contain implementations for multiple languages.
-
-Example structure:
+## Structure
 
 ```text
 projects/
   calculator/
-    python/
-    javascript/
-    go/
-    ...
+    python/ javascript/ go/ rust/ java/ typescript/
+    php/ ruby/ csharp/ cpp/
   number-guessing/
-    ...
+  password-generator/
+  todo-cli/
 ```
+
+Each implementation should behave the same so you can compare syntax side by side.
