@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 class Program {
     static void Main() {
@@ -11,7 +12,11 @@ class Program {
         Console.WriteLine($"{name} is {age} years old");
 
         Console.WriteLine(name.Substring(0, 2)); // ul
-        Console.WriteLine(new string(name.Reverse().ToArray()));
+
+        // reverse without MemoryExtensions ambiguity
+        char[] chars = name.ToCharArray();
+        Array.Reverse(chars);
+        Console.WriteLine(new string(chars));
 
         Console.WriteLine(name.Contains("ula"));
         Console.WriteLine(name.StartsWith("u"));
