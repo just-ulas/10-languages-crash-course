@@ -21,20 +21,22 @@ C#              →  Console.WriteLine("hello")
 
 ---
 
-## Topics
+## Topics & Coverage
 
-| #  | Topic            | Coverage                        |
-|----|------------------|---------------------------------|
-| 01–08 | Core basics   | ✅ All 10 languages             |
-| 09 | Strings          | ✅ 10 languages + challenge     |
-| 10 | User Input       | ✅ Most languages               |
-| 11 | Error Handling   | ✅ Most + challenge             |
-| 12 | File I/O         | ✅ Py, JS, Go, Rust             |
-| 13 | Modules          | ✅ Py, JS, Go, Rust             |
-| 14 | JSON             | ✅ Py, JS, Go, Rust             |
-| 15 | Enums            | ✅ Py, JS, Go, Rust, TS, Java, C# |
-| 16 | Async            | ✅ Py, JS, Go (+ Rust note)     |
-| 17 | HTTP / API       | ✅ Py, JS, Go                   |
+| #  | Topic            | Languages                         | Challenge |
+|----|------------------|-----------------------------------|-----------|
+| 01–08 | Core basics   | ✅ All 10                         | partial   |
+| 09 | Strings          | ✅ All 10                         | ✅        |
+| 10 | User Input       | Most                              | ✅        |
+| 11 | Error Handling   | Most                              | ✅        |
+| 12 | File I/O         | Py, JS, Go, Rust                  | ✅        |
+| 13 | Modules          | Py, JS, Go, Rust                  | ✅        |
+| 14 | JSON             | Py, JS, Go, Rust                  | ✅        |
+| 15 | Enums            | Py, JS, Go, Rust, TS, Java, C#    | ✅        |
+| 16 | Async            | Py, JS, Go                        | ✅        |
+| 17 | HTTP / API       | Py, JS, Go                        | ✅        |
+
+> Advanced topics are intentionally not forced into every language. Some concepts don't map cleanly.
 
 ---
 
@@ -42,30 +44,30 @@ C#              →  Console.WriteLine("hello")
 
 ```bash
 chmod +x run.sh
-./run.sh python 15
+./run.sh python 09
 ./run.sh all 01
-./run.sh csharp 01   # real C# execution
+./run.sh csharp 01
 ```
 
 ---
 
 ## Mini Projects
 
-| Project            | Languages              |
-|--------------------|------------------------|
-| Calculator         | Python, JS, Go, Rust   |
-| Number Guessing    | Python, JS, Go         |
-| Password Generator | Python, JS             |
-| Todo CLI           | Python                 |
+| Project            | Languages                    |
+|--------------------|------------------------------|
+| Calculator         | Python, JS, Go, Rust, Java, TS |
+| Number Guessing    | Python, JS, Go, Rust         |
+| Password Generator | Python, JS, Go               |
+| Todo CLI           | Python, JS, Go               |
 
 ---
 
-## Also included
+## Also
 
-- `COMPARISON.md`
-- `challenges/` (multiple)
+- `COMPARISON.md` — typing, memory, OOP, concurrency...
+- `challenges/` — practice for most topics
 - `explanations/tr` + `en`
-- MIT License + CONTRIBUTING + issue/PR templates
+- MIT + CONTRIBUTING + issue/PR templates
 - CI on every push
 
-**Repo:** https://github.com/just-ulas/10-languages-crash-course
+**https://github.com/just-ulas/10-languages-crash-course**
