@@ -1,4 +1,4 @@
-name: CI
+name: Smoke
 
 on:
   push:
@@ -6,8 +6,9 @@ on:
   pull_request:
     branches: [ main ]
 
+# Compile/run non-interactive lessons. This is a smoke test, not golden-output tests.
 jobs:
-  compile-and-run:
+  smoke:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,130 +32,108 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Install PHP Ruby g++ mono
+      - name: Install PHP Ruby g++ mono TypeScript
         run: |
           sudo apt-get update
           sudo apt-get install -y php-cli ruby g++ mono-mcs mono-runtime
+          npm install -g typescript
 
-      # Only run non-interactive lessons (skip *input* and projects that need stdin)
-      - name: Python non-interactive lessons
+      # Explicit skip list (interactive / needs stdin or network flaky)
+      - name: Python smoke
         run: |
           set -e
+          SKIP="python/10_input.py"
           for f in python/*.py; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *) echo "RUN $f"; python "$f" ;;
-            esac
+            echo "$SKIP" | grep -qx "$f" && { echo "skip $f"; continue; }
+            echo "RUN $f"
+            python "$f"
           done
 
-      - name: JavaScript non-interactive lessons
+      - name: JavaScript smoke
         run: |
           set -e
+          SKIP="javascript/10_input.js"
           for f in javascript/*.js; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *) echo "RUN $f"; node "$f" ;;
-            esac
+            echo "$SKIP" | grep -qx "$f" && { echo "skip $f"; continue; }
+            echo "RUN $f"
+            node "$f"
           done
 
-      - name: Go non-interactive lessons
+      - name: Go smoke
         run: |
           set -e
+          SKIP="go/10_input.go"
           for f in go/*.go; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *) echo "RUN $f"; go run "$f" ;;
-            esac
+            echo "$SKIP" | grep -qx "$f" && { echo "skip $f"; continue; }
+            echo "RUN $f"
+            go run "$f"
           done
 
-      - name: Rust non-interactive lessons
+      - name: Rust smoke
         run: |
           set -e
+          SKIP="rust/10_input.rs"
           for f in rust/*.rs; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *)
-                echo "RUN $f"
-                rustc "$f" -o /tmp/out
-                /tmp/out
-                ;;
-            esac
+            echo "$SKIP" | grep -qx "$f" && { echo "skip $f"; continue; }
+            echo "RUN $f"
+            rustc "$f" -o /tmp/out && /tmp/out
           done
 
-      - name: PHP non-interactive lessons
+      - name: PHP smoke
         run: |
           set -e
+          SKIP="php/10_input.php"
           for f in php/*.php; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *) echo "RUN $f"; php "$f" ;;
-            esac
+            echo "$SKIP" | grep -qx "$f" && { echo "skip $f"; continue; }
+            echo "RUN $f"
+            php "$f"
           done
 
-      - name: Ruby non-interactive lessons
+      - name: Ruby smoke
         run: |
           set -e
+          SKIP="ruby/10_input.rb"
           for f in ruby/*.rb; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *) echo "RUN $f"; ruby "$f" ;;
-            esac
+            echo "$SKIP" | grep -qx "$f" && { echo "skip $f"; continue; }
+            echo "RUN $f"
+            ruby "$f"
           done
 
-      - name: Java compile + run non-interactive
+      - name: Java smoke
         run: |
           set -e
           for f in java/*.java; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *)
-                echo "RUN $f"
-                classname=$(grep -E 'public[[:space:]]+class[[:space:]]+[A-Za-z0-9_]+' "$f" | head -1 | sed -E 's/.*class[[:space:]]+([A-Za-z0-9_]+).*/\1/')
-                javac "$f" -d /tmp
-                java -cp /tmp "$classname"
-                ;;
-            esac
+            case "$f" in *input*|*/10_*) echo "skip $f"; continue ;; esac
+            echo "RUN $f"
+            classname=$(grep -E 'public[[:space:]]+class[[:space:]]+[A-Za-z0-9_]+' "$f" | head -1 | sed -E 's/.*class[[:space:]]+([A-Za-z0-9_]+).*/\1/')
+            javac "$f" -d /tmp
+            java -cp /tmp "$classname"
           done
 
-      - name: C++ compile + run non-interactive
+      - name: C++ smoke
         run: |
           set -e
           for f in cpp/*.cpp; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *)
-                echo "RUN $f"
-                g++ "$f" -o /tmp/cpp_out
-                /tmp/cpp_out
-                ;;
-            esac
+            case "$f" in *input*|*/10_*) echo "skip $f"; continue ;; esac
+            echo "RUN $f"
+            g++ "$f" -o /tmp/cpp_out && /tmp/cpp_out
           done
 
-      - name: C# compile + run (mono) non-interactive
+      - name: C# smoke (mono)
         run: |
           set -e
           for f in csharp/*.cs; do
-            case "$f" in
-              *input*|*10_*) echo "skip $f" ;;
-              *)
-                echo "RUN $f"
-                mcs "$f" -out:/tmp/cs.exe
-                mono /tmp/cs.exe
-                ;;
-            esac
+            case "$f" in *input*|*/10_*) echo "skip $f"; continue ;; esac
+            echo "RUN $f"
+            mcs "$f" -out:/tmp/cs.exe && mono /tmp/cs.exe
           done
 
-      - name: TypeScript check (transpile with tsc if available)
+      - name: TypeScript typecheck
         run: |
           set -e
-          npm install -g typescript 2>/dev/null || true
-          if command -v tsc >/dev/null 2>&1; then
-            for f in typescript/*.ts; do
-              case "$f" in
-                *input*|*10_*) echo "skip $f" ;;
-                *) echo "CHECK $f"; tsc --noEmit --esModuleInterop --module commonjs "$f" || tsc --noEmit "$f" ;;
-              esac
-            done
-          else
-            echo "tsc not available, skip TS"
-          fi
+          command -v tsc
+          for f in typescript/*.ts; do
+            case "$f" in *input*|*/10_*) echo "skip $f"; continue ;; esac
+            echo "CHECK $f"
+            tsc --noEmit --esModuleInterop --module commonjs --target ES2020 "$f"
+          done
